@@ -1,7 +1,7 @@
 - name: Wait for docker in manager to start
   wait_for:
-    host: {{ swarn_manager_address }}
-    port: {{ swarn_manager_port }}
+    host: "{{ swarn_manager_address }}"
+    port: "{{ swarn_manager_port }}"
     timeout: 120
 
 - name: Get the worker join-token.
