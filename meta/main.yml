@@ -1,0 +1,21 @@
+galaxy_info:
+  author: micafer1@upv.es
+  description: Install docker swarm cluster
+  company: GRyCAP UPV
+  license: Apache
+  min_ansible_version: 2.0
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+  - name: EL
+    versions:
+    - 7
+  galaxy_tags: 
+   - docker
+   - swarm
+
+dependencies:
+  - { role: grycap.docker }
+
+

@@ -1,0 +1,11 @@
+#- name: Include "{{ansible_os_family}}" tasks
+#  include: "{{ansible_os_family}}.yml"
+
+- name: Check docker info
+  shell: docker info
+  changed_when: False
+  register: docker_info
+
+- name: Include "{{swarn_type_of_node}}" recipe
+  include: "{{swarn_type_of_node}}.yml"
+

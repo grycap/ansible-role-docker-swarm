@@ -1,0 +1,6 @@
+- name: Init "Swarm Mode" on the first manager.
+  shell: docker swarm init
+        --listen-addr {{ swarn_manager_address }}:{{ swarn_manager_port }}
+        --advertise-addr {{ swarn_manager_address }}
+  when: "docker_info.stdout.find('Swarm: active') == -1"
+

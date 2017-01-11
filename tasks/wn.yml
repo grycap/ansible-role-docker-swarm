@@ -1,0 +1,9 @@
+- name: Get the worker join-token.
+  local_action: shell docker swarm join-token -q worker
+  changed_when: False
+  register: docker_worker_token
+
+- name: Join the pending Swarm worker nodes.
+  shell: docker swarm join --token "{{ docker_worker_token.stdout }}" {{ swarn_manager_address }}:{{ swarn_manager_port }}
+  changed_when: False
+  when: "docker_info.stdout.find('Swarm: active') == -1 and docker_info.stdout.find('Swarm: pending') == -1"
