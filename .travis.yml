@@ -6,7 +6,10 @@ python: "2.7"
 
 before_install:
  - sudo apt-get update -qq
-  # install docker
+ - pip install ansible
+ # Create ansible.cfg with correct roles_path
+ - printf '[defaults]\nroles_path=../' > ansible.cfg
+ # install docker
  - ansible-galaxy install grycap.docker
  - ansible-playbook tests/test_docker.yml -i tests/inventory 
 
@@ -17,13 +20,7 @@ addons:
 
 install:
   # Check ansible version
-  - pip install ansible
-
-  # Check ansible version
   - ansible --version
-
-  # Create ansible.cfg with correct roles_path
-  - printf '[defaults]\nroles_path=../' > ansible.cfg
 
 script:
   - ansible-playbook tests/test.yml -i tests/inventory 
