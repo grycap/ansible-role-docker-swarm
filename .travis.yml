@@ -6,12 +6,6 @@ python: "2.7"
 
 before_install:
  - sudo apt-get update -qq
- - pip install ansible
- # Create ansible.cfg with correct roles_path
- - printf '[defaults]\nroles_path=../' > ansible.cfg
- # install docker
- - ansible-galaxy install grycap.docker
- - ansible-playbook tests/test_docker.yml -i tests/inventory 
 
 addons:
   apt:
@@ -20,11 +14,19 @@ addons:
 
 install:
   # Check ansible version
+  - pip install ansible
+
+  # Check ansible version
   - ansible --version
 
+  # Create ansible.cfg with correct roles_path
+  - printf '[defaults]\nroles_path=../' > ansible.cfg
+
+  - ansible-galaxy install grycap.docker
+
 script:
-  - ansible-playbook tests/test.yml -i tests/inventory 
-#  - ansible-playbook tests/test.yml -i tests/inventory -e "swarn_type_of_node=wn"
+  # Basic role syntax check
+  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
