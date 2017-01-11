@@ -25,9 +25,8 @@ install:
   - ansible-galaxy install grycap.docker
 
 script:
-  - ansible-playbook tests/test.yml -i tests/inventory 
-
-  - ansible-playbook tests/test.yml -i tests/inventory -e "swarn_type_of_node=wn"
+  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+#  - ansible-playbook tests/test.yml -i tests/inventory -e "swarn_type_of_node=wn"
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
