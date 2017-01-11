@@ -23,6 +23,7 @@ install:
   - printf '[defaults]\nroles_path=../' > ansible.cfg
 
   # install docker
+  - apt-get -y install python-dev python-setuptools wget
   - ansible-galaxy install grycap.docker
   - ansible-playbook tests/test_docker.yml -i tests/inventory 
 
