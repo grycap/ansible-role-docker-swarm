@@ -10,6 +10,7 @@
     insertbefore: '^ExecStart='
     line: 'EnvironmentFile=/etc/default/docker'
   ignore_errors: yes
+  notify: reload docker
 
 - lineinfile:
     dest: /lib/systemd/system/docker.service
@@ -17,6 +18,7 @@
     line: '\1\2\3 $DOCKER_OPTS'
     backrefs: yes
   ignore_errors: yes
+  notify: reload docker
 
 - name: Init "Swarm Mode" on the first manager.
   shell: docker swarm init
