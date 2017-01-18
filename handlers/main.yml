@@ -2,7 +2,7 @@
   service: name=docker state=restarted
 
 - name: reload docker
-- systemd:
+  systemd:
     state: restarted
     daemon_reload: yes
     name: docker
