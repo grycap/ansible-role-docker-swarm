@@ -3,26 +3,6 @@
   changed_when: False
   register: docker_info
 
-# Enable to read the docker default values
-- lineinfile:
-    dest: /lib/systemd/system/docker.service
-    insertbefore: '^ExecStart='
-    line: 'EnvironmentFile=/etc/default/docker'
-  ignore_errors: yes
-  notify:
-  - reload systemctl
-  - swarm restart docker
-
-- lineinfile:
-    dest: /lib/systemd/system/docker.service
-    regexp: '^(ExecStart=)(.*)(-H fd://)$'
-    line: '\1\2\3 $DOCKER_OPTS'
-    backrefs: yes
-  ignore_errors: yes
-  notify:
-  - reload systemctl
-  - swarm restart docker
-
 - name: Include "{{swarn_type_of_node}}" recipe
   include: "{{swarn_type_of_node}}.yml"
 

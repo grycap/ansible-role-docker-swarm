@@ -1,5 +1,1 @@
-- name: reload systemctl
-  command: systemctl daemon-reload
-
-- name: swarm restart docker
-  service: name=docker state=restarted
+---
