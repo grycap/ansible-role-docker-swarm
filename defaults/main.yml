@@ -6,4 +6,4 @@ swarn_manager_address: "{{ ansible_default_ipv4.address }}"
 # swarm manager port
 swarn_manager_port: 2377
 # set docker_opts for the docker role
-docker_opts: "-H unix:///var/run/docker.sock  -H tcp://0.0.0.0:2375 --dns 8.8.8.8 --dns 8.8.4.4"
+swarm_docker_opts: "-H unix:///var/run/docker.sock  -H tcp://0.0.0.0:2375 --dns 8.8.8.8 --dns 8.8.4.4"

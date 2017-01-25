@@ -16,6 +16,6 @@ galaxy_info:
    - swarm
 
 dependencies:
-  - { role: grycap.docker }
+  - { role: grycap.docker, docker_opts: "{{ swarm_docker_opts }}" }
 
 

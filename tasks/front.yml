@@ -1,10 +1,3 @@
-- name: Activate docker port 2375
-  lineinfile:
-    dest: /etc/default/docker
-    regexp: 'DOCKER_OPTS='
-    line: 'DOCKER_OPTS="-H unix:///var/run/docker.sock  -H tcp://0.0.0.0:2375"'
-  notify: restart docker
-
 - name: Init "Swarm Mode" on the first manager.
   shell: docker swarm init
         --listen-addr {{ swarn_manager_address }}:{{ swarn_manager_port }}
