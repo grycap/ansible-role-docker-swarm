@@ -26,13 +26,13 @@ Example Playbooks
 ```
   - hosts: manager
     roles:
-    - { role: 'grycap.docker-swarm' }
+    - { role: 'grycap.swarm' }
 ```
 
 ```
   - hosts: worker
     roles:
-    - { role: 'grycap.docker-swarm', swarn_type_of_node: 'wn', swarn_manager_address: '10.0.0.1' }
+    - { role: 'grycap.swarm', swarn_type_of_node: 'wn', swarn_manager_address: '10.0.0.1' }
 ```
 
 Contributing to the role
