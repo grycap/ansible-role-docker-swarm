@@ -5,9 +5,10 @@
     timeout: 120
 
 - name: Get the worker join-token.
-  local_action: shell docker swarm join-token -q worker
+  shell: docker swarm join-token -q worker
   changed_when: False
   register: docker_worker_token
+  delegate_to: "{{ swarn_manager_address }}"
 
 - name: Join the pending Swarm worker nodes.
   shell: docker swarm join --token "{{ docker_worker_token.stdout }}" {{ swarn_manager_address }}:{{ swarn_manager_port }}
